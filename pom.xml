@@ -4,7 +4,7 @@
 
 	<groupId>com.github.japgolly.android.test</groupId>
 	<artifactId>test_utils</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>Android Test Utils</name>
 	<parent>
