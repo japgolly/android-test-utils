@@ -1,5 +1,7 @@
 package com.github.japgolly.android.test.fest;
 
+import static com.xtremelabs.robolectric.Robolectric.shadowOf;
+
 import android.view.View;
 
 import com.xtremelabs.robolectric.shadows.ShadowView;
@@ -53,6 +55,21 @@ public abstract class AbstractViewAssert<S extends AbstractViewAssert<S, V>, V e
 
 	public S isGone() {
 		assertVisibility("be GONE").isEqualTo(View.GONE);
+		return myself;
+	}
+
+	public S hasBackgroundResId(int id) {
+		final int actualId = shadowOf(actual.getBackground()).getLoadedFromResourceId();
+		Assertions.assertThat(fmtResId(actualId)).isEqualTo(fmtResId(id));
+		return myself;
+	}
+
+	private static String fmtResId(int id) {
+		return String.format("0x%08x", id);
+	}
+
+	public S hasBackgroundColor(int color) {
+		Assertions.assertThat(actual.getBackgroundColor()).isEqualTo(color);
 		return myself;
 	}
 }
