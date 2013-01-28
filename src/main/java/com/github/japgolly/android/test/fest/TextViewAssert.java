@@ -40,7 +40,7 @@ public class TextViewAssert extends AbstractViewAssert<TextViewAssert, ShadowTex
 		return myself;
 	}
 
-	public TextViewAssert hasText(String text) {
+	public TextViewAssert hasExactText(String text) {
 		Assertions.assertThat(actual.getText().toString()).isEqualTo(text);
 		return myself;
 	}
