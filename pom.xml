@@ -57,4 +57,12 @@
 			<version>1.9.5</version>
 		</dependency>
 	</dependencies>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License v3.0 or later</name>
+			<url>http://www.spdx.org/licenses/LGPL-3.0+</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 </project>
