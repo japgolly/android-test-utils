@@ -35,42 +35,59 @@ public class TextViewAssert extends AbstractViewAssert<TextViewAssert, ShadowTex
 
 	// -----------------------------------------------------------------------------------------------------------------
 
+	public TextViewAssert hasNonNullText() {
+		Assertions
+				.assertThat(actual.getText())
+				.overridingErrorMessage(
+						"Text is null. Most likely setText(int) was called with an invalid string resource id.")
+				.isNotNull();
+		return myself;
+	}
+
 	public TextViewAssert hasEmptyText() {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString().isEmpty()).isTrue();
 		return myself;
 	}
 
 	public TextViewAssert hasExactText(String text) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).isEqualTo(text);
 		return myself;
 	}
 
 	public TextViewAssert hasTextMatching(String regex) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).matches(regex);
 		return myself;
 	}
 
 	public TextViewAssert hasTextMatching(Pattern regex) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).matches(regex);
 		return myself;
 	}
 
 	public TextViewAssert doesNotHaveTextMatching(String regex) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).doesNotMatch(regex);
 		return myself;
 	}
 
 	public TextViewAssert doesNotHaveTextMatching(Pattern regex) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).doesNotMatch(regex);
 		return myself;
 	}
 
 	public TextViewAssert containsText(String text) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).contains(text);
 		return myself;
 	}
 
 	public TextViewAssert doesNotContainText(String text) {
+		hasNonNullText();
 		Assertions.assertThat(actual.getText().toString()).doesNotContain(text);
 		return myself;
 	}
