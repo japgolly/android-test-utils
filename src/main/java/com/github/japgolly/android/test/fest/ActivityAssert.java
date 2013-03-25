@@ -64,19 +64,29 @@ public class ActivityAssert extends AbstractAssert<ActivityAssert, ShadowActivit
 		return this;
 	}
 
-	public Intent startedActivity(Class<? extends Activity> activity) {
+	public Intent startedActivity() {
 		isNotNull();
 		Intent intent = actual.getNextStartedActivity();
 		Assertions.assertThat(intent).overridingErrorMessage("No activity started.").isNotNull();
+		return intent;
+	}
+
+	public Intent startedActivity(Class<? extends Activity> activity) {
+		Intent intent = startedActivity();
 		Assertions.assertThat(shadowOf(intent).getIntentClass().getCanonicalName()).isEqualTo(
 				activity.getCanonicalName());
 		return intent;
 	}
 
-	public Intent startedActivityForResult(Class<? extends Activity> activity, int requestCode) {
+	public IntentForResult startedActivityForResult() {
 		isNotNull();
 		IntentForResult i = actual.getNextStartedActivityForResult();
 		Assertions.assertThat(i).overridingErrorMessage("No activity started.").isNotNull();
+		return i;
+	}
+
+	public Intent startedActivityForResult(Class<? extends Activity> activity, int requestCode) {
+		IntentForResult i = startedActivityForResult();
 		Assertions.assertThat(i.requestCode).isEqualTo(requestCode);
 		Assertions.assertThat(shadowOf(i.intent).getIntentClass().getCanonicalName()).isEqualTo(
 				activity.getCanonicalName());
