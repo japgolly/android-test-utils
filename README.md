@@ -7,7 +7,7 @@ Inject pom with:
 <dependency>
 	<groupId>com.github.japgolly.android.test</groupId>
 	<artifactId>test_utils</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<scope>test</scope>
 </dependency>
 ```
